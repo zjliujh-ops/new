@@ -10,8 +10,8 @@ import PyPDF2
 # 这里为了演示，假设用户已经配置好客户端
 # client = OpenAI(api_key="ms-f0118ead-bbf5-4b69-b4a4-6045902b499f") 
 client = OpenAI(
-    api_key="ms-f0118ead-bbf5-4b69-b4a4-6045902b499f", 
-    base_url="https://api-inference.modelscope.cn" # 或者 api.openai.com
+    api_key="sk-54324006b96f4d76851065011ee47ef0", 
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1" # 或者 api.openai.com
 )
 # 模拟数据库 (在实际生产中应连接 SQL 数据库)
 if 'candidates' not in st.session_state:
@@ -60,7 +60,7 @@ def get_ai_response(messages):
     """
     try:
         response = client.chat.completions.create(
-            model="Qwen/Qwen3-Coder-480B-A35B-Instruct",  # 或者 "gpt-3.5-turbo", "qwen-turbo"
+            model="qwen-plus",  # 或者 "gpt-3.5-turbo", "qwen-turbo"
             messages=messages,
             temperature=0.7,
             stream=False # 简单起见先不流式输出
